@@ -17,10 +17,11 @@ To use CMPToast in your Compose Multiplatform project, add the following depende
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:cmptoast:1.0.0")
+    implementation("network.chaintech:cmptoast:1.0.1")
 }
 ```
 <br>
+
 
 ## 🚀 Usage
 
