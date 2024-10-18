@@ -1,3 +1,11 @@
+[![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/cmptoast.svg)](https://central.sonatype.com/artifact/network.chaintech/cmptoast)
+[![Kotlin](https://img.shields.io/badge/kotlin-v2.0.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.0-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![License](https://img.shields.io/github/license/Chaintech-Network/CMPToast)](http://www.apache.org/licenses/LICENSE-2.0)
+
+![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/platform-ios-FF375F.svg?style=flat)
+
 # CMPToast - Toasts for Compose Multiplatform
 
 🍞️ CMPToast is a lightweight and easy-to-use library for displaying toast messages in Compose Multiplatform projects.<br><br>
@@ -17,9 +25,21 @@ To use CMPToast in your Compose Multiplatform project, add the following depende
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:cmptoast:1.0.1")
+  implementation("network.chaintech:cmptoast:1.0.2")
 }
 ```
+
+<br>Note : Create an Application Class and add the following line (Otherwise you might face context error):
+
+```kotlin
+class MyApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        multiplatform.network.cmptoast.AppContext.apply { set(applicationContext) }
+    }
+}
+```
+
 <br>
 
 
@@ -132,18 +152,20 @@ CMPToast currently supports the following platforms:
 
 - **Android** 🤖
 - **iOS** 🍎
-  <br>
+  <br><br>
 
 
 ## 📖 Detailed Explanation
 
 For an in-depth guide and detailed explanation, check out our comprehensive Medium Blog Post.
 
-[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@waghmaremayur855/cmptoast-toasts-for-compose-multiplatform-projects-db4a78f37dfe)  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/showcase/mobile-innovation-network)
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@waghmaremayur855/cmptoast-toasts-for-compose-multiplatform-projects-db4a78f37dfe)
 
 Stay connected and keep up with our latest innovations! 💼 Let's innovate together!
-<br><br>
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/showcase/mobile-innovation-network)
+
+<br>
 
 ## 📄 License
 ```

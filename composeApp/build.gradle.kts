@@ -43,6 +43,14 @@ kotlin {
         }
     }
 
+    jvm {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "17"
+            }
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -64,6 +72,9 @@ kotlin {
             implementation(libs.androidx.activityCompose)
         }
 
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
     }
 }
 
@@ -72,7 +83,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 24
         targetSdk = 34
 
         applicationId = "network.chaintech.cmptoastdemo.androidApp"
