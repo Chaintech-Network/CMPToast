@@ -40,6 +40,15 @@ class MyApplication : Application() {
 }
 ```
 
+<br>Also if you are getting Manifest Merger Failed issue, add the following to your Android Manifest file:
+
+```kotlin
+tools:replace="android:name"
+```
+```kotlin
+tools:replace="android:allowBackup"
+```
+
 <br>
 
 
