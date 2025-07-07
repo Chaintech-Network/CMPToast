@@ -1,6 +1,6 @@
 [versions]
 
-cmptoast = "1.0.3"
+cmptoast = "1.0.5"
 kotlin = "2.0.21"
 compose = "1.7.0"
 agp = "8.5.2"
