@@ -25,7 +25,7 @@ To use CMPToast in your Compose Multiplatform project, add the following depende
 
 ```kotlin
 commonMain.dependencies {
-  implementation("network.chaintech:cmptoast:1.0.4")
+  implementation("network.chaintech:cmptoast:1.0.6")
 }
 ```
 
@@ -137,22 +137,42 @@ showToast(
     backgroundColor = Color(0xFF27AD9D)
 )
 ```
+
+### 🎨 Icon Toast
+
+To show a toast with icon:
+
+```kotlin
+val resource = Res.drawable.ic_profile // Profile Icon
+val iconBitmap = resource.let { imageResource(it) }
+
+showToast(
+  message = "This is Icon Toast",
+  backgroundColor = Color.White,
+  textColor = Color.Black,
+  gravity = ToastGravity.Center,
+  icon = iconBitmap,
+  iconSizeDp = 20
+)
+```
 <br>
 
 ## ⚙️ Properties
 
-| Property         | Type            | Description                                            |
-|------------------|-----------------|--------------------------------------------------------|
-| **message**      | `String`         | The message to be displayed in the toast.              |
-| **gravity**      | `ToastGravity`   | The position of the toast.                             |
-| **backgroundColor** | `Color`       | The background color of the toast.                     |
-| **textColor**    | `Color`          | The color of the message text.                         |
-| **duration**     | `ToastDuration`  | The duration of the toast.                             |
-| **padding**      | `ToastPadding?`  | Internal padding for the toast content.                |
-| **textSize**     | `TextUnit`       | The size of the text.                                  |
-| **topPadding**   | `Int`            | Padding between toast and top of screen.               |
-| **bottomPadding**| `Int`            | Padding between toast and bottom of screen.            |
-| **cornerRadius** | `Int?`           | For rounding the corners of the toast.                 |
+| Property            | Type            | Description                                              |
+|---------------------|-----------------|----------------------------------------------------------|
+| **message**         | `String`        | The message to be displayed in the toast.                |
+| **icon**            | `ImageBitmap?`  | Optional icon to be displayed alongside the message.     |
+| **iconSizeDp**      | `Dp`            | The size of the icon in dp.                              |
+| **gravity**         | `ToastGravity`  | The position of the toast (e.g., Top, Center, Bottom).   |
+| **backgroundColor** | `Color`         | The background color of the toast.                       |
+| **textColor**       | `Color`         | The color of the message text.                           |
+| **duration**        | `ToastDuration` | The duration of the toast (Short or Long).               |
+| **padding**         | `ToastPadding?` | Internal padding for the toast content.                  |
+| **textSize**        | `TextUnit`      | The size of the text.                                    |
+| **topPadding**      | `Int`           | Padding between toast and top of the screen.             |
+| **bottomPadding**   | `Int`           | Padding between toast and bottom of the screen.          |
+| **cornerRadius**    | `Int?`          | For rounding the corners of the toast.                   |
 <br>
 
 ## 🖥️ Platforms Supported

@@ -44,6 +44,7 @@ import multiplatform.network.cmptoast.ToastDuration
 import multiplatform.network.cmptoast.ToastGravity
 import multiplatform.network.cmptoast.showToast
 import org.jetbrains.compose.resources.Font
+import org.jetbrains.compose.resources.imageResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -51,7 +52,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 @Preview
 fun App() {
-    val customToastList = listOf("Top Toast", "Center Toast", "Colored Toast")
+    val customToastList = listOf("Top Toast", "Center Toast", "Colored Toast", "Icon Toast")
     val FontAeonik = FontFamily(
         Font(Res.font.Aeonik_Regular, FontWeight.Normal),
         Font(Res.font.Aeonik_Bold, FontWeight.Bold)
@@ -60,6 +61,10 @@ fun App() {
     val FontSfPro = FontFamily(
         Font(Res.font.SF_Pro_Display, FontWeight.Normal)
     )
+
+    val resource = Res.drawable.ic_profile // Profile Icon
+    val iconBitmap = resource.let { imageResource(it) }
+
 
     MaterialTheme {
         Box(
@@ -233,6 +238,16 @@ fun App() {
                                     showToast(
                                         message = "This is Colored Toast",
                                         backgroundColor = Color(0xFF27AD9D)
+                                    )
+                                }
+                                3 -> {
+                                    showToast(
+                                        message = "This is Icon Toast",
+                                        backgroundColor = Color.White,
+                                        textColor = Color.Black,
+                                        gravity = ToastGravity.Center,
+                                        icon = iconBitmap,
+                                        iconSizeDp = 20
                                     )
                                 }
                             }
