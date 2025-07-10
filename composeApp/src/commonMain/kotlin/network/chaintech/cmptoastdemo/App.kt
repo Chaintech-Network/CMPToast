@@ -171,7 +171,12 @@ fun App() {
                                     message = "This is Short Toast",
                                     backgroundColor = Color.White,
                                     textColor = Color.Black,
-                                    duration = ToastDuration.Short
+                                    duration = ToastDuration.Short,
+                                    cornerRadius = if (isDesktopPlatform()) { // Corner radius based on platform
+                                        10
+                                    } else {
+                                        null
+                                    }
                                 )
                             }
                         )
@@ -257,6 +262,10 @@ fun App() {
             }
         }
     }
+}
+
+private fun isDesktopPlatform(): Boolean {
+    return platformName() == "Desktop"
 }
 
 @Composable

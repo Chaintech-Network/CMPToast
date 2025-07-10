@@ -1,7 +1,8 @@
+@file:OptIn(ExperimentalWasmDsl::class)
+
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -20,15 +21,6 @@ kotlin {
                 }
             }
         }
-        //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        instrumentedTestVariant {
-            sourceSetTree.set(KotlinSourceSetTree.test)
-//            dependencies {
-//                debugImplementation(libs.androidx.testManifest)
-//                implementation(libs.androidx.junit4)
-//            }
-        }
     }
 
 
@@ -43,12 +35,11 @@ kotlin {
         }
     }
 
-    jvm {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
-        }
+    jvm()
+
+    wasmJs {
+        browser()
+        binaries.executable()
     }
 
     sourceSets {
@@ -80,11 +71,11 @@ kotlin {
 
 android {
     namespace = "network.chaintech.cmptoastdemo"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
 
         applicationId = "network.chaintech.cmptoastdemo.androidApp"
         versionCode = 1

@@ -5,6 +5,8 @@
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-FF375F.svg?style=flat)
+![badge-desktop](http://img.shields.io/badge/platform-desktop-FF9500.svg?style=flat)
+![badge-web](https://img.shields.io/badge/platform-web-33ceff.svg?style=flat)
 
 # CMPToast - Toasts for Compose Multiplatform
 
@@ -25,7 +27,7 @@ To use CMPToast in your Compose Multiplatform project, add the following depende
 
 ```kotlin
 commonMain.dependencies {
-  implementation("network.chaintech:cmptoast:1.0.6")
+  implementation("network.chaintech:cmptoast:1.0.7")
 }
 ```
 
@@ -33,10 +35,10 @@ commonMain.dependencies {
 
 ```kotlin
 class MyApplication : Application() {
-    override fun onCreate() {
-        super.onCreate()
-        multiplatform.network.cmptoast.AppContext.apply { set(applicationContext) }
-    }
+  override fun onCreate() {
+    super.onCreate()
+    multiplatform.network.cmptoast.AppContext.apply { set(applicationContext) }
+  }
 }
 ```
 
@@ -60,8 +62,40 @@ To display a simple toast:
 
 ```kotlin
 showToast(
-    message = "This is a Toast"
+  message = "This is a Toast"
 )
+```
+<br>
+
+### Important : Desktop and Web Support
+
+To display a toast add the `ToastHost` to your main composable inside your wasmJs or jvm target:
+Checkout the sample app for implementation
+
+```kotlin
+// For jvmMain target (..jvmMain/main.kt)
+fun main() = application {
+    Window(
+        title = "CMPToast Demo",
+        state = rememberWindowState(width = 800.dp, height = 600.dp),
+        onCloseRequest = ::exitApplication,
+    ) {
+        window.minimumSize = Dimension(150, 150)
+        App()
+
+        ToastHost() // *** Important : Include this line to show the ToastHost
+    }
+}
+
+// For wasmJs target (..wasmJsMain/main.kt)
+@OptIn(ExperimentalComposeUiApi::class)
+fun main() {
+    ComposeViewport(document.body!!) {
+        App()
+
+        ToastHost() // *** Important : Include this line to show the ToastHost
+    }
+}
 ```
 <br>
 
@@ -81,10 +115,10 @@ To show a short-duration toast:
 
 ```kotlin
 showToast(
-    message = "This is Short Toast",
-    backgroundColor = Color.White,
-    textColor = Color.Black,
-    duration = ToastDuration.Short
+  message = "This is Short Toast",
+  backgroundColor = Color.White,
+  textColor = Color.Black,
+  duration = ToastDuration.Short
 )
 ```
 
@@ -94,10 +128,10 @@ To show a long-duration toast:
 
 ```kotlin
 showToast(
-    message = "This is Long Toast",
-    backgroundColor = Color.White,
-    textColor = Color.Black,
-    duration = ToastDuration.Long
+  message = "This is Long Toast",
+  backgroundColor = Color.White,
+  textColor = Color.Black,
+  duration = ToastDuration.Long
 )
 ```
 
@@ -107,10 +141,10 @@ To show toast at top of the screen:
 
 ```kotlin
 showToast(
-    message = "This is Top Toast",
-    backgroundColor = Color.White,
-    textColor = Color.Black,
-    gravity = ToastGravity.Top
+  message = "This is Top Toast",
+  backgroundColor = Color.White,
+  textColor = Color.Black,
+  gravity = ToastGravity.Top
 )
 ```
 
@@ -120,10 +154,10 @@ To show toast at center of the screen:
 
 ```kotlin
 showToast(
-    message = "This is Center Toast",
-    backgroundColor = Color.White,
-    textColor = Color.Black,
-    gravity = ToastGravity.Center
+  message = "This is Center Toast",
+  backgroundColor = Color.White,
+  textColor = Color.Black,
+  gravity = ToastGravity.Center
 )
 ```
 
@@ -133,8 +167,8 @@ To show a colored toast:
 
 ```kotlin
 showToast(
-    message = "This is Colored Toast",
-    backgroundColor = Color(0xFF27AD9D)
+  message = "This is Colored Toast",
+  backgroundColor = Color(0xFF27AD9D)
 )
 ```
 
@@ -212,5 +246,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
-

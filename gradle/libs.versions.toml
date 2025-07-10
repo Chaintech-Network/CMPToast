@@ -1,11 +1,12 @@
 [versions]
 
-cmptoast = "1.0.5"
-kotlin = "2.0.21"
-compose = "1.7.0"
-agp = "8.5.2"
-androidx-activityCompose = "1.9.3"
-androidx-uiTest = "1.7.4"
+cmptoast = "1.0.7"
+kotlin = "2.2.0"
+compose = "1.8.2"
+agp = "8.9.3"
+androidx-activityCompose = "1.10.1"
+androidx-uiTest = "1.8.3"
+mavenVersion = "0.31.0"
 
 [libraries]
 
@@ -21,4 +22,4 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenVersion" }
