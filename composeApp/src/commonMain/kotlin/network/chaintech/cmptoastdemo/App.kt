@@ -52,7 +52,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 @Preview
 fun App() {
-    val customToastList = listOf("Top Toast", "Center Toast", "Colored Toast", "Icon Toast")
+    val customToastList = listOf("Top Toast", "Center Toast", "Colored Toast", "Icon Toast", "Custom Duration Toast")
     val FontAeonik = FontFamily(
         Font(Res.font.Aeonik_Regular, FontWeight.Normal),
         Font(Res.font.Aeonik_Bold, FontWeight.Bold)
@@ -253,6 +253,14 @@ fun App() {
                                         gravity = ToastGravity.Center,
                                         icon = iconBitmap,
                                         iconSizeDp = 20
+                                    )
+                                }
+                                4 -> {
+                                    showToast(
+                                        message = "This is Custom Duration Toast",
+                                        backgroundColor = Color.White,
+                                        textColor = Color.Black,
+                                        duration = ToastDuration.CustomDuration(10) // Specify duration in seconds
                                     )
                                 }
                             }
